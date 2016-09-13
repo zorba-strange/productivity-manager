@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
+import Form from './Form';
 
 class Timer extends Component {
   constructor() {
-    super();
+    super()
       this.state = {
         time: '',
         value: '',
@@ -12,16 +13,16 @@ class Timer extends Component {
         formShow: false
       }
   }
-    handleChange = function(event){
+    handleChange(event){
       event.preventDefault();
       this.setState({value: event.target.value});
-    }.bind(this);
+    }
 
-    onClick = function(){
+    onClick(){
       this.setState({time: this.state.value});
-    }.bind(this);
+    }
 
-    countDown = function(){
+    countDown(){
       var time = parseInt(this.state.time);
       console.log(time);
       if(time ===  0){
@@ -31,17 +32,15 @@ class Timer extends Component {
         time--;
         this.setState({time: time});
       }
-    }.bind(this);
+    }
 
-    timer = function(){
+    timer(){
       console.log('timer', 1);
       if(!this.state.timerId){
-      this.setState({interval: setInterval(this.countDown, 1000)});
+      this.setState({interval: setInterval((e) => this.countDown(), 1000)});
       this.setState({timerId: this.state.interval});
       }
-
-
-    }.bind(this);
+    }
 
     render() {
       return (
@@ -51,12 +50,13 @@ class Timer extends Component {
           <input 
           type="text" 
           value={this.state.value}
-          onChange={this.handleChange} 
+          onChange={(e) => this.handleChange(e)} 
           />
-          <input type="Button" value="Set Timer" onClick={this.onClick} />
+          <input type="Button" value="Set Timer" onClick={(e) => this.onClick()} />
           </form>
-          <input type="Button" value="Go" onClick={this.timer} />
+          <input type="Button" value="Go" onClick={(e) => this.timer()} />
           <h2>{this.state.time}</h2>
+          <Form formShow={this.state.formShow} />
           </div>
           );
     }
