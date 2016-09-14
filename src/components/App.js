@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import Form from './Form';
 import Timer from './Timer';
+import Entry from './Entry';
 
 class App extends Component {
   constructor() {
@@ -52,7 +53,6 @@ class App extends Component {
       }
     }
 
-
     render() {
       return (
           <div className="center">
@@ -68,6 +68,7 @@ class App extends Component {
            <input type="Button" value="Go" onClick={(e) => this.timer()} />
           <Timer timeShow={this.state.timeShow} time={this.state.time} />
           <Form formShow={this.state.formShow} />
+          <Entry />
           </div>
           );
     }
