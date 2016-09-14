@@ -15,7 +15,7 @@ class Entry extends Component {
   componentDidMount(){
     console.log('mount');
     $.ajax({
-      url: 'http://localhost:3000/entry',
+      url: this.props.source,
       dataType: "json",
       cache: false,
       success: function(data){
@@ -24,7 +24,7 @@ class Entry extends Component {
         })
       }.bind(this),
       error: function(xhr, status, err) {
-        console.log(this.props.url, status, err);
+        console.log(this.props.url, status, err.toString());
       }.bind(this)
     })
   }

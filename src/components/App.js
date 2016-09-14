@@ -68,7 +68,7 @@ class App extends Component {
            <input type="Button" value="Go" onClick={(e) => this.timer()} />
           <Timer timeShow={this.state.timeShow} time={this.state.time} />
           <Form formShow={this.state.formShow} />
-          <Entry />
+          <Entry source='http://localhost:3000/entry' />
           </div>
           );
     }
