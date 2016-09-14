@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../css/App.css';
 import Form from './Form';
+import Timer from './Timer';
 
-class Timer extends Component {
+class App extends Component {
   constructor() {
     super()
       this.state = {
@@ -10,7 +11,8 @@ class Timer extends Component {
         value: '',
         timerId: '',
         interval: '',
-        formShow: false
+        formShow: false,
+        timeShow: false
       }
   }
     handleChange(event){
@@ -18,8 +20,12 @@ class Timer extends Component {
       this.setState({value: event.target.value});
     }
 
-    onClick(){
-      this.setState({time: this.state.value});
+    timerSet(){
+      this.setState({
+        time: this.state.value,
+        timeShow: true
+      });
+      console.log(this.state.time);
     }
 
     countDown(){
@@ -27,7 +33,11 @@ class Timer extends Component {
       console.log(time);
       if(time ===  0){
         clearInterval(this.state.interval);
-        this.setState({timerId: null, formShow: true});
+        this.setState({
+          timerId: null,
+          formShow: true,
+          timeShow: false,
+        });
       } else {
         time--;
         this.setState({time: time});
@@ -42,6 +52,7 @@ class Timer extends Component {
       }
     }
 
+
     render() {
       return (
           <div className="center">
@@ -52,14 +63,14 @@ class Timer extends Component {
           value={this.state.value}
           onChange={(e) => this.handleChange(e)} 
           />
-          <input type="Button" value="Set Timer" onClick={(e) => this.onClick()} />
+          <input type="Button" value="Set Timer" onClick={(e) => this.timerSet()} />
           </form>
-          <input type="Button" value="Go" onClick={(e) => this.timer()} />
-          <h2>{this.state.time}</h2>
+           <input type="Button" value="Go" onClick={(e) => this.timer()} />
+          <Timer timeShow={this.state.timeShow} time={this.state.time} />
           <Form formShow={this.state.formShow} />
           </div>
           );
     }
 }
 
-export default Timer;
+export default App;

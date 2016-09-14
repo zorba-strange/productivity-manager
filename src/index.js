@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Timer from './Timer';
-import './index.css';
+import App from './components/App';
+import './css/index.css';
 
 ReactDOM.render(
-  <Timer />,
+  <App />,
   document.getElementById('root')
 );
