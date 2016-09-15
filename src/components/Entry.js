@@ -17,7 +17,6 @@ class Entry extends Component {
     $.ajax({
       url: this.props.source,
       dataType: "json",
-      cache: false,
       success: function(data){
         this.setState({
           data: data

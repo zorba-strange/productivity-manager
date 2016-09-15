@@ -8,40 +8,47 @@ class Form extends Component {
       this.state = {
         notes: '',
         client: '',
-        project: ''
+        project: '',
+        entry: {
+          client: '',
+          project: '',
+          note: ''
+        }
       }
   }
 
   getNotes(event){
+    console.log(this.state.entry);
     this.setState({
-      notes: event.target.value
+      entry: {note: event.target.value}
     });
   }
 
   getClient(event){
     this.setState({
-      client: event.target.value
+      entry: {client: event.target.value}
     });
   }
 
   getProject(event){
     this.setState({
-      project: event.target.value
+      entry: {project: event.target.value}
     });
   }
 
   formSubmit(){
-    console.log(this.state.notes, this.state.client, this.state.project);
+    console.log(this.state.entry.client, this.state.project, this.state.note);
   }
 
   render(){
     if(this.props.formShow){
       return (
           <div>
+          <h2>Break. Reflect. Record.</h2>
           <form>
-          <input type="text" value={this.state.client} placeholder="Client" onChange={(e) =>this.getClient(e)} />
-          <input type="text" value={this.state.project} placeholder="Project" onChange={(e) => this.getProject(e)} />
-          <input className="notes-form" type="text" value={this.state.notes} placeholder="Notes"  onChange={(e) => this.getNotes(e)} />
+          <input type="text" value={this.state.entry.client} placeholder="Client" onChange={(e) =>this.getClient(e)} />
+          <input type="text" value={this.state.entry.project} placeholder="Project" onChange={(e) => this.getProject(e)} />
+          <input className="notes-form" type="text" value={this.state.entry.note} placeholder="Notes"  onChange={(e) => this.getNotes(e)} />
           <input type="Button" value="Log" onClick={(e) => this.formSubmit()} />
           </form>
           </div>

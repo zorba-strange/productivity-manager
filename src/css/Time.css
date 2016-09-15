@@ -1,0 +1,15 @@
+.timer {
+  height: 10em;
+  width: 10em;
+  text-align: center;
+  background-color: violet;
+  border-radius: 50%;
+  margin: 1em auto;
+}
+
+.time {
+  margin: 0 auto;
+  padding-top: 30%;
+  color: white;
+  font-size: 300%;
+}
