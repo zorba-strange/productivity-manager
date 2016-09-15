@@ -20,50 +20,6 @@ class App extends Component {
       event.preventDefault();
       this.setState({value: event.target.value});
     }
-    // 
-    // $('.click').click(function () {
-    //     var rawAmount = $('input').val();
-    //         var cleanAmount = parseInt(rawAmount);
-    //             var totalAmount = cleanAmount * 60;
-    //                  $('input').val(" ");
-    //
-    //                      var loop, theFunction = function () {
-    //
-    //                              totalAmount--;
-    //
-    //                                      if (totalAmount == 0) {
-    //
-    //                                                  clearInterval(loop);
-    //                                                          }
-    //                                                                  var
-    //                                                                  minutes
-    //                                                                  =
-    //                                                                  parseInt(totalAmount/60);
-    //                                                                          var
-    //                                                                          seconds
-    //                                                                          =
-    //                                                                          parseInt(totalAmount%60);
-    //                                                                                  if(seconds
-    //                                                                                  <
-    //                                                                                  10)
-    //                                                                                              seconds
-    //                                                                                              =
-    //                                                                                              "0"+seconds;
-    //                                                                                                      $('p').text(minutes
-    //                                                                                                      +
-    //                                                                                                      ":"
-    //                                                                                                      +
-    //                                                                                                      seconds);
-    //                                                                                                          };
-    //
-    //                                                                                                              var
-    //                                                                                                              loop
-    //                                                                                                              =
-    //                                                                                                              setInterval(theFunction,
-    //                                                                                                              1000);
-    //
-    //                                                                                                              })
-
     timerSet(){
       this.setState({
         time: this.state.value,
@@ -87,37 +43,37 @@ class App extends Component {
         this.setState({time: time});
       }
     }
-    
-// $('.click').click(function () {
-//     var rawAmount = $('input').val();
-//     var cleanAmount = parseInt(rawAmount);
-//     var totalAmount = cleanAmount * 60;
-//      $('input').val(" ");
 
-//     var loop, theFunction = function () {
+    // $('.click').click(function () {
+    //     var rawAmount = $('input').val();
+    //     var cleanAmount = parseInt(rawAmount);
+    //     var totalAmount = cleanAmount * 60;
+    //      $('input').val(" ");
 
-//         totalAmount--;
+    //     var loop, theFunction = function () {
 
-//         if (totalAmount == 0) {
+    //         totalAmount--;
 
-//             clearInterval(loop);
-//         }
-//         var minutes = parseInt(totalAmount/60);
-//         var seconds = parseInt(totalAmount%60);
-//         if(seconds < 10)
-//             seconds = "0"+seconds;
-//         $('p').text(minutes + ":" + seconds);
-//     };
+    //         if (totalAmount == 0) {
 
-//     var loop  = setInterval(theFunction, 1000);
+    //             clearInterval(loop);
+    //         }
+    //         var minutes = parseInt(totalAmount/60);
+    //         var seconds = parseInt(totalAmount%60);
+    //         if(seconds < 10)
+    //             seconds = "0"+seconds;
+    //         $('p').text(minutes + ":" + seconds);
+    //     };
 
-// })
+    //     var loop  = setInterval(theFunction, 1000);
+
+    // })
 
     timer(){
       console.log('timer', 1);
       if(!this.state.timerId){
-      this.setState({interval: setInterval((e) => this.countDown(), 1000)});
-      this.setState({timerId: this.state.interval});
+        this.setState({interval: setInterval((e) => this.countDown(), 1000)});
+        this.setState({timerId: this.state.interval});
       }
     }
 
@@ -135,9 +91,9 @@ class App extends Component {
           />
           <input type="Button" value="Set Timer" onClick={(e) => this.timerSet()} />
           </form>
-           <input type="Button" value="Go" onClick={(e) => this.timer()} />
+          <input type="Button" value="Go" onClick={(e) => this.timer()} />
           <Timer timeShow={this.state.timeShow} time={this.state.time} />
-          <Form formShow={this.state.formShow} />
+          <Form postUrl='http://localhost:3000/entry' formShow={this.state.formShow} />
           <Entry source='http://localhost:3000/entry' />
           </div>
           );

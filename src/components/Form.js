@@ -1,43 +1,57 @@
 import React, { Component } from 'react';
 import '../css/Form.css'; 
+const $ = require ('jquery')
 
 
 class Form extends Component {
   constructor(){
     super()
       this.state = {
-        notes: '',
+        note: '',
         client: '',
-        project: '',
-        entry: {
-          client: '',
-          project: '',
-          note: ''
-        }
+        project: ''
       }
   }
 
-  getNotes(event){
-    console.log(this.state.entry);
+  handleSubmit(){
+    console.log('Form Mount');
+    var entry = {client: this.state.client, note: this.state.note, project: this.state.project};
+    $.ajax({
+      url: this.props.postUrl,
+      type: 'POST',
+      data: entry,
+      dataType: 'json',
+      success: function(data){
+        console.log('Submit success');
+        window.location.reload('#');
+      }.bind(this),
+      error: function(xhr, status, err){
+       console.log(this.props.postUrl, status, err.toString());
+      }.bind(this)
+    })
+  }
+
+  getNote(event){
     this.setState({
-      entry: {note: event.target.value}
-    });
+      note: event.target.value
+    })
+    console.log(event.target.value)
   }
 
   getClient(event){
     this.setState({
-      entry: {client: event.target.value}
-    });
+      client: event.target.value
+    })
   }
 
   getProject(event){
     this.setState({
-      entry: {project: event.target.value}
-    });
+      project: event.target.value
+    })
   }
 
   formSubmit(){
-    console.log(this.state.entry.client, this.state.project, this.state.note);
+    console.log(this.state.entry);
   }
 
   render(){
@@ -45,11 +59,11 @@ class Form extends Component {
       return (
           <div>
           <h2>Break. Reflect. Record.</h2>
-          <form>
-          <input type="text" value={this.state.entry.client} placeholder="Client" onChange={(e) =>this.getClient(e)} />
-          <input type="text" value={this.state.entry.project} placeholder="Project" onChange={(e) => this.getProject(e)} />
-          <input className="notes-form" type="text" value={this.state.entry.note} placeholder="Notes"  onChange={(e) => this.getNotes(e)} />
-          <input type="Button" value="Log" onClick={(e) => this.formSubmit()} />
+          <form  >
+          <input type="text" value={this.state.client} placeholder="Client" onChange={(e) =>this.getClient(e) } />
+          <input type="text" value={this.state.project} placeholder="Project" onChange={(e) => this.getProject(e)} />
+          <input className="notes-form"  type="text" value={this.state.note} placeholder="Notes" onChange={(e) => this.getNote(e)} />
+          <input type="Button" value="Log" onClick={(e) => this.handleSubmit()} />
           </form>
           </div>
           )

@@ -18,6 +18,7 @@ class Entry extends Component {
       url: this.props.source,
       dataType: "json",
       success: function(data){
+        console.log(data);
         this.setState({
           data: data
         })
@@ -28,6 +29,8 @@ class Entry extends Component {
     })
   }
 
+  handleNoteLog(note){
+  }
 
   render(){
     return(
