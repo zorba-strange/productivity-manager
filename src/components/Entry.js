@@ -16,27 +16,30 @@ class Entry extends Component {
   componentDidMount(){
     console.log('mount');
     $.ajax({
-      url: 'http://localhost:3000/entry',
+      url: this.props.source,
       dataType: "json",
-      cache: false,
       success: function(data){
+        console.log(data);
         this.setState({
           data: data
         })
       }.bind(this),
       error: function(xhr, status, err) {
-        console.log(this.props.url, status, err);
+        console.log(this.props.url, status, err.toString());
       }.bind(this)
     })
   }
 
+  handleNoteLog(note){
+  }
 
   render(){
     return(
         <div>
+        <h1>Time Sheet</h1>
         <table className="table">
               <tr>
-                      <th>Client</th>
+                      <th><h3>Client</h3></th>
                       <th>Project</th>
                       <th>Notes</th>
                       </tr>

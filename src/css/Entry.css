@@ -3,7 +3,17 @@
   width: 100%;
 }
 
-th, td{
+th {
+  color: #333;
+ }
+
+th{
+  border: 1px solid black;
+}
+
+td {
+  padding: .5em;
+  margin: 1px;
   border: 1px solid black;
 }
 

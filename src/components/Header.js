@@ -4,7 +4,7 @@ import '../css/Header.css';
 class Header extends Component {
   render(){
     return (
-        <h1 className="header">Time Management</h1>
+        <h1 className="header">Productivity Manager</h1>
         )
   }
 }
