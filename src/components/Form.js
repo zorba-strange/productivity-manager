@@ -15,6 +15,7 @@ class Form extends Component {
 
   handleSubmit(){
     console.log('Form Mount');
+    var self = this;
     var entry = {client: this.state.client, note: this.state.note, project: this.state.project};
     $.ajax({
       url: this.props.postUrl,
@@ -23,7 +24,7 @@ class Form extends Component {
       dataType: 'json',
       success: function(data){
         console.log('Submit success');
-        window.location.reload('#');
+        var entries = self.state.data
       }.bind(this),
       error: function(xhr, status, err){
        console.log(this.props.postUrl, status, err.toString());
