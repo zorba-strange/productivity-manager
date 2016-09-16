@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-const $ = require ('jquery')
+const $ = require ('jquery');
+import '../css/Entry.css';
 
 class Entry extends Component {
   constructor(){
@@ -33,9 +34,20 @@ class Entry extends Component {
   render(){
     return(
         <div>
+        <table className="table">
+              <tr>
+                      <th>Client</th>
+                      <th>Project</th>
+                      <th>Notes</th>
+                      </tr>
         {this.state.data.map(function(data){
-            return <h3 key={data.id}>{data.client} | {data.project} | {data.note}</h3>;
+            return   <tr key={data.id}>
+                      <td>{data.client}</td>
+                      <td>{data.project}</td>
+                      <td>{data.note}</td>
+                      </tr>
           })}
+                      </table>
         </div>
         )
   }

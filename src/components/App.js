@@ -3,6 +3,7 @@ import '../css/App.css';
 import Form from './Form';
 import Timer from './Timer';
 import Entry from './Entry';
+import Header from './Header';
 
 class App extends Component {
   constructor() {
@@ -56,6 +57,7 @@ class App extends Component {
     render() {
       return (
           <div className="center">
+          <Header />
           <h1 className="center">Set Timer</h1>
           <form className="center" >
           <input 
